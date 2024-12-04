@@ -5,6 +5,9 @@ on:
     branches:
       - master
 
+env:
+  SKIP_VERSIONING: ${{ contains(join(github.event.commits.*.message), '#skip') }}
+
 jobs:
   a_test_job:
     runs-on: ubuntu-20.04
@@ -22,3 +25,5 @@ jobs:
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES"
+      - name: Print if should skip
+        run: echo "$SKIP_VERSIONING"

@@ -8,6 +8,10 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+app.get("/change", (req, res) => {
+  res.send("Minor change to run workflow");
+});
+
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
